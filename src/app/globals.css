@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Colors */
+  --color-charcoal: #1a1a1a;
+  --color-deep-black: #0a0a0a;
+  --color-gold: #c6a55c;
+  --color-gold-light: #d4c088;
+  --color-gold-dark: #a8893d;
+  --color-cream: #faf7f2;
+  --color-cream-dark: #e8e0d4;
+  --color-warm-gray: #2a2a2a;
+  --color-warm-gray-light: #3a3a3a;
+  --color-muted: #888888;
+
+  /* Fonts */
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  /* Animations */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-slow: float-slow 12s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-scroll-indicator: scroll-indicator 2s ease-in-out infinite;
+  --animate-gradient: gradient-shift 15s ease infinite;
+  --animate-pulse-gold: pulse-gold 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-0.5deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scroll-indicator {
+  0% { transform: translateY(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 165, 92, 0.3); }
+  50% { box-shadow: 0 0 20px 5px rgba(198, 165, 92, 0.1); }
+}
+
+/* ── Base ────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0a;
+  color: #faf7f2;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #c6a55c;
+  color: #0a0a0a;
+}
+
+/* ── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #c6a55c; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #d4c088; }
+
+/* ── Utilities ───────────────────────────────────── */
+.gold-shimmer {
+  background: linear-gradient(90deg, #c6a55c 0%, #d4c088 25%, #c6a55c 50%, #d4c088 75%, #c6a55c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c6a55c, transparent);
+}
+
+/* ── Portfolio Card ──────────────────────────────── */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 40%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.portfolio-card:hover .card-overlay { opacity: 1; }
+
+.portfolio-card .card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.portfolio-card:hover .card-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.portfolio-card .card-image {
+  transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.portfolio-card:hover .card-image {
+  transform: scale(1.08);
+}
