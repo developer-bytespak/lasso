@@ -16,38 +16,36 @@ export default function HeroSection() {
       className="relative h-screen w-full overflow-hidden bg-deep-black"
     >
       {/* ── Background Video ──────────────────────────── */}
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[3s] ${
-            loaded ? "scale-100" : "scale-110"
-          }`}
-        >
-          {/* Replace src with your hero video */}
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+      {/* Animated gradient fallback (behind video) */}
+      <div
+        className="absolute inset-0 animate-gradient bg-[length:400%_400%]"
+        style={{
+          backgroundImage:
+            "linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 20%, #1a1510 40%, #0a0a0a 60%, #151015 80%, #0a0a0a 100%)",
+        }}
+      />
 
-        {/* Animated gradient fallback (visible when no video) */}
-        <div
-          className="absolute inset-0 animate-gradient bg-[length:400%_400%]"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 20%, #1a1510 40%, #0a0a0a 60%, #151015 80%, #0a0a0a 100%)",
-          }}
-        />
-      </div>
+      {/* Video layer (on top of fallback) */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={`absolute inset-0 z-[1] w-full h-full object-cover transition-transform duration-[3s] ${
+          loaded ? "scale-100" : "scale-110"
+        }`}
+      >
+        <source src="/content/vid3.mp4" type="video/mp4" />
+      </video>
 
       {/* ── Overlays ──────────────────────────────────── */}
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-deep-black/40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-deep-black/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-[2] bg-black/50" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-t from-deep-black via-deep-black/20 to-deep-black/40" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-r from-deep-black/60 via-transparent to-transparent" />
 
       {/* ── Ambient glow orbs ─────────────────────────── */}
-      <div className="absolute top-[20%] right-[22%] w-[500px] h-[500px] rounded-full bg-gold/5 blur-[120px] animate-float pointer-events-none" />
-      <div className="absolute bottom-[25%] left-[10%] w-80 h-80 rounded-full bg-gold/[0.03] blur-[100px] animate-float-slow pointer-events-none" />
+      <div className="absolute z-[3] top-[20%] right-[22%] w-[500px] h-[500px] rounded-full bg-gold/5 blur-[120px] animate-float pointer-events-none" />
+      <div className="absolute z-[3] bottom-[25%] left-[10%] w-80 h-80 rounded-full bg-gold/[0.03] blur-[100px] animate-float-slow pointer-events-none" />
 
       {/* ── Content ───────────────────────────────────── */}
       <div className="relative z-10 h-full flex items-center">

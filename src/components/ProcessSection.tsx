@@ -3,104 +3,113 @@
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
-const steps = [
-  {
-    number: "01",
-    title: "Consultation",
-    description:
-      "Begin with a personalized consultation where we discuss your vision, assess your hair, and plan the perfect style.",
-  },
-  {
-    number: "02",
-    title: "Preparation",
-    description:
-      "Arrive with clean, detangled hair. Avoid heavy oils or conditioners. We'll handle the rest with premium products.",
-  },
-  {
-    number: "03",
-    title: "The Experience",
-    description:
-      "Relax and enjoy the transformation. Our stylists work with precision and care to bring your vision to life.",
-  },
-  {
-    number: "04",
-    title: "Aftercare",
-    description:
-      "Receive personalized aftercare instructions to maintain your style's beauty and protect your natural hair.",
-  },
-];
-
 const guidelines = [
-  "Please arrive on time — late arrivals may result in rescheduling",
-  "Hair should be freshly washed and detangled before your appointment",
-  "A non-refundable deposit is required to secure your booking",
-  "Cancellations must be made at least 24 hours in advance",
-  "Children under 12 must be accompanied by a guardian",
+  {
+    icon: "✦",
+    title: "Hair Preparation",
+    description: "Clean, detangled, blow-dried hair required before your visit",
+  },
+  {
+    icon: "✦",
+    title: "Secure Your Spot",
+    description: "A deposit is required to confirm your booking",
+  },
+  {
+    icon: "✦",
+    title: "Changes & Cancellations",
+    description: "Cancel or update appointments in advance to avoid deposit loss",
+  },
+  {
+    icon: "✦",
+    title: "Be On Time",
+    description: "Late arrivals may result in rescheduling or cancellation",
+  },
+  {
+    icon: "✦",
+    title: "Guest Policy",
+    description: "Guests are not allowed unless approved prior to your appointment",
+  },
+  {
+    icon: "✦",
+    title: "How to Book",
+    description: "Consultations via DMs, bookings are made through Square",
+  },
 ];
 
-export default function ProcessSection() {
+export default function GuidelinesSection() {
   return (
     <section
       id="process"
-      className="relative py-32 md:py-40 bg-charcoal overflow-hidden"
+      className="relative py-32 md:py-44 bg-charcoal overflow-hidden"
     >
+      {/* Top gold line */}
       <div className="absolute top-0 left-0 w-full h-px gold-line" />
+      <div className="absolute bottom-0 left-0 w-full h-px gold-line" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold/[0.02] blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeading
-          subtitle="Your Journey"
-          title="The Experience"
-          description="From your first consultation to aftercare, every step is designed to be seamless, comfortable, and luxurious."
+          subtitle="Before Your Visit"
+          title="Booking & Appointment Guidelines"
         />
 
-        {/* ── Steps ───────────────────────────────────── */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 mb-24 md:mb-32">
-          {steps.map((step, i) => (
-            <AnimatedSection key={step.number} delay={0.15 * i}>
-              <div className="relative group">
-                {/* Connecting line (desktop) */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-gold/30 to-transparent z-0" />
-                )}
+        {/* ── Intro paragraph in styled box ───────────── */}
+        <AnimatedSection>
+          <div className="max-w-3xl mx-auto mb-20 relative">
+            <div className="relative border border-gold/15 bg-deep-black/40 px-8 md:px-14 py-10 md:py-12">
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-gold/40" />
+              <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-gold/40" />
+              <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-gold/40" />
+              <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-gold/40" />
+
+              <p className="text-cream/55 text-base md:text-lg leading-[1.9] text-center font-sans">
+                Arrive on time and come with clean, detangled, blow-dried hair.
+                A deposit is required to secure your appointment, and
+                cancellations or style changes should be made in advance. Guests
+                are not allowed unless approved, and late arrivals may lead to
+                cancellation or deposit loss. Consultations are handled through
+                DMs, while bookings are made through Square.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* ── Guideline Cards Grid ────────────────────── */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {guidelines.map((item, i) => (
+            <AnimatedSection key={i} delay={0.1 * i} animation="fade-up">
+              <div className="group relative bg-deep-black/50 border border-white/5 p-7 md:p-8 hover:border-gold/25 transition-all duration-700 h-full">
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                 <div className="relative z-10">
-                  <span className="font-serif text-5xl md:text-6xl text-gold/10 group-hover:text-gold/20 transition-colors duration-700 block leading-none">
-                    {step.number}
-                  </span>
-                  <h3 className="font-serif text-xl text-cream mt-4 mb-3 group-hover:text-gold transition-colors duration-500">
-                    {step.title}
-                  </h3>
+                  {/* Number + Icon row */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="flex items-center justify-center w-9 h-9 border border-gold/20 text-gold text-xs group-hover:bg-gold/10 transition-all duration-500">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-gold/20 to-transparent" />
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="font-serif text-lg text-cream mb-2 group-hover:text-gold transition-colors duration-500">
+                    {item.title}
+                  </h4>
+
+                  {/* Description */}
                   <p className="text-cream/40 text-sm leading-relaxed">
-                    {step.description}
+                    {item.description}
                   </p>
                 </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-700" />
               </div>
             </AnimatedSection>
           ))}
-        </div>
-
-        {/* ── Guidelines ──────────────────────────────── */}
-        <div className="max-w-3xl mx-auto">
-          <AnimatedSection>
-            <h3 className="font-serif text-2xl md:text-3xl text-center text-cream mb-10">
-              Appointment Guidelines
-            </h3>
-          </AnimatedSection>
-
-          <div className="space-y-0">
-            {guidelines.map((guideline, i) => (
-              <AnimatedSection key={i} delay={0.1 * i}>
-                <div className="flex items-start gap-4 py-5 border-b border-white/5 group">
-                  <span className="text-gold text-sm mt-0.5 flex-shrink-0">
-                    ✦
-                  </span>
-                  <p className="text-cream/50 text-sm md:text-base leading-relaxed group-hover:text-cream/70 transition-colors duration-500">
-                    {guideline}
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
       </div>
     </section>

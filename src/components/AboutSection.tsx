@@ -38,8 +38,11 @@ export default function AboutSection() {
           {/* ── Image Side ────────────────────────────── */}
           <AnimatedSection animation="fade-right" className="relative">
             <div className="relative aspect-[3/4] overflow-hidden">
-              {/* Replace with your image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-warm-gray via-charcoal to-warm-gray-light" />
+              <img
+                src="/content/Image-1.png"
+                alt="About LUXE Salon"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
               {/* Gold frame accents */}
               <div className="absolute -top-3 -left-3 w-2/3 h-2/3 border border-gold/20 pointer-events-none" />
               <div className="absolute -bottom-3 -right-3 w-2/3 h-2/3 border border-gold/20 pointer-events-none" />
