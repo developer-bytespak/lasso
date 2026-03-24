@@ -10,7 +10,7 @@ const contactInfo = [
     icon: "📍",
   },
   { label: "Phone", value: "+1 (555) 123-4567", icon: "📞" },
-  { label: "Email", value: "hello@luxesalon.com", icon: "✉" },
+  { label: "Email", value: "hello@elushbeautybar.com", icon: "✉" },
   {
     label: "Hours",
     value: "Mon – Sat: 9 am – 7 pm\nSunday: By Appointment",

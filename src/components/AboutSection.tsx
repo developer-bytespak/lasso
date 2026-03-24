@@ -40,7 +40,7 @@ export default function AboutSection() {
             <div className="relative aspect-[3/4] overflow-hidden">
               <img
                 src="/content/Image-1.png"
-                alt="About LUXE Salon"
+                alt="About Elush Beauty Bar"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               {/* Gold frame accents */}

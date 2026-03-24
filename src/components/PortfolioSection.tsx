@@ -4,12 +4,12 @@ import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
 const styles = [
-  { name: "Knotless Braids", category: "Braids" },
+  { name: "Knotless Braids", category: "Braids", image: "/content/B1.png" },
   { name: "Faux Locs", category: "Locs" },
   { name: "Passion Twist", category: "Twists" },
   { name: "Boho Braids", category: "Braids" },
   { name: "Marley Twist", category: "Twists" },
-  { name: "Goddess Locs", category: "Locs" },
+  { name: "Goddess Locs", category: "Locs" ,image: "/content/B2.png"},
   { name: "Box Braids", category: "Braids" },
   { name: "Senegalese Twist", category: "Twists" },
 ];
@@ -63,11 +63,19 @@ export default function PortfolioSection() {
               className={sizeClasses[i] ?? ""}
             >
               <div className="portfolio-card group cursor-pointer w-full h-full">
-                {/* Image placeholder */}
-                <div
-                  className="card-image absolute inset-0"
-                  style={{ background: gradients[i] }}
-                />
+                {/* Image or gradient placeholder */}
+                {style.image ? (
+                  <img
+                    src={style.image}
+                    alt={style.name}
+                    className="card-image absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className="card-image absolute inset-0"
+                    style={{ background: gradients[i] }}
+                  />
+                )}
 
                 {/* Overlay */}
                 <div className="card-overlay" />

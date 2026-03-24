@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LUXE | Premium Hair Styling Experience",
+  title: "Elush Beauty Bar | Premium Hair Styling Experience",
   description:
     "Experience the art of luxury hair styling. Premium braids, weaves, and transformative beauty services crafted with precision and passion.",
 };

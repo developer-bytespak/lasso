@@ -36,7 +36,7 @@ export default function Navbar() {
           href="#home"
           className="font-serif text-xl md:text-2xl text-cream tracking-wider hover:text-gold transition-colors duration-300"
         >
-          LUXE<span className="text-gold">.</span>
+          Elush<span className="text-gold"> Beauty Bar</span>
         </a>
 
         {/* Desktop links */}

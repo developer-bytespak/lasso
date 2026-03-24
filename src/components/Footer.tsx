@@ -53,7 +53,7 @@ export default function Footer() {
               href="#home"
               className="font-serif text-2xl text-cream tracking-wider inline-block mb-4"
             >
-              LUXE<span className="text-gold">.</span>
+              Elush<span className="text-gold"> Beauty Bar</span>
             </a>
             <p className="text-cream/30 text-sm leading-relaxed max-w-xs">
               Where beauty becomes art. Premium hair styling crafted with
@@ -97,7 +97,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-cream/20 text-xs tracking-wider">
-            © {new Date().getFullYear()} LUXE Salon. All rights reserved.
+            © {new Date().getFullYear()} Elush Beauty Bar. All rights reserved.
           </p>
           <p className="text-cream/20 text-xs tracking-wider">
             Crafted with passion for beauty
