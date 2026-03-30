@@ -6,58 +6,58 @@ export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const dot = dotRef.current;
-    const ring = ringRef.current;
-    if (!dot || !ring) return;
+  // useEffect(() => {
+  //   const dot = dotRef.current;
+  //   const ring = ringRef.current;
+  //   if (!dot || !ring) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let ringX = 0;
-    let ringY = 0;
+  //   let mouseX = 0;
+  //   let mouseY = 0;
+  //   let ringX = 0;
+  //   let ringY = 0;
 
-    const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.left = `${mouseX - 5}px`;
-      dot.style.top = `${mouseY - 5}px`;
-    };
+  //   const onMove = (e: MouseEvent) => {
+  //     mouseX = e.clientX;
+  //     mouseY = e.clientY;
+  //     dot.style.left = `${mouseX - 5}px`;
+  //     dot.style.top = `${mouseY - 5}px`;
+  //   };
 
-    const animate = () => {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-      ring.style.left = `${ringX - 20}px`;
-      ring.style.top = `${ringY - 20}px`;
-      requestAnimationFrame(animate);
-    };
+  //   const animate = () => {
+  //     ringX += (mouseX - ringX) * 0.15;
+  //     ringY += (mouseY - ringY) * 0.15;
+  //     ring.style.left = `${ringX - 20}px`;
+  //     ring.style.top = `${ringY - 20}px`;
+  //     requestAnimationFrame(animate);
+  //   };
 
-    const onEnterInteractive = () => {
-      dot.classList.add("hovering");
-      ring.classList.add("hovering");
-    };
+  //   const onEnterInteractive = () => {
+  //     dot.classList.add("hovering");
+  //     ring.classList.add("hovering");
+  //   };
 
-    const onLeaveInteractive = () => {
-      dot.classList.remove("hovering");
-      ring.classList.remove("hovering");
-    };
+  //   const onLeaveInteractive = () => {
+  //     dot.classList.remove("hovering");
+  //     ring.classList.remove("hovering");
+  //   };
 
-    window.addEventListener("mousemove", onMove);
-    animate();
+  //   window.addEventListener("mousemove", onMove);
+  //   animate();
 
-    const interactiveEls = document.querySelectorAll("a, button, [role='button'], .product-card");
-    interactiveEls.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterInteractive);
-      el.addEventListener("mouseleave", onLeaveInteractive);
-    });
+  //   const interactiveEls = document.querySelectorAll("a, button, [role='button'], .product-card");
+  //   interactiveEls.forEach((el) => {
+  //     el.addEventListener("mouseenter", onEnterInteractive);
+  //     el.addEventListener("mouseleave", onLeaveInteractive);
+  //   });
 
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      interactiveEls.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterInteractive);
-        el.removeEventListener("mouseleave", onLeaveInteractive);
-      });
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("mousemove", onMove);
+  //     interactiveEls.forEach((el) => {
+  //       el.removeEventListener("mouseenter", onEnterInteractive);
+  //       el.removeEventListener("mouseleave", onLeaveInteractive);
+  //     });
+  //   };
+  // }, []);
 
   return (
     <>

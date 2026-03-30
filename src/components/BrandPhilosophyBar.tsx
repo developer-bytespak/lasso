@@ -4,12 +4,13 @@ const marqueeText = "DESIGNED FOR CULTURE · BUILT FOR MOVEMENT · WORN BY CHAMP
 
 export default function BrandPhilosophyBar() {
   return (
-    <section className="relative h-[100px] bg-charcoal flex items-center overflow-hidden border-y border-gold/10">
+    <section className="relative h-18 bg-charcoal flex items-center overflow-hidden border-y border-gray-100">
       <div className="marquee-track">
         {[...Array(6)].map((_, i) => (
           <span
             key={i}
-            className="font-display text-gold text-lg md:text-xl tracking-[0.3em] whitespace-nowrap mx-4"
+            className="font-body text-sm font-semibold tracking-[0.25em] whitespace-nowrap mx-4"
+            style={{ color: "#2596be" }}
           >
             {marqueeText}
           </span>

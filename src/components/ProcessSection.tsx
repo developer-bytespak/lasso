@@ -3,79 +3,75 @@
 import AnimatedSection from "./AnimatedSection";
 
 const trendingItems = [
-  { tag: "Trending Now", brand: "NIKE", name: "Air Max 270", gradient: "linear-gradient(135deg, #2a2010 0%, #181818 100%)" },
-  { tag: "Top Picks", brand: "JORDAN", name: "1 High OG", gradient: "linear-gradient(135deg, #301818 0%, #181818 100%)" },
-  { tag: "Editor's Choice", brand: "PUMA", name: "Suede Classic", gradient: "linear-gradient(135deg, #182a2a 0%, #181818 100%)" },
-  { tag: "New Arrival", brand: "LASSO", name: "Original Drop", gradient: "linear-gradient(135deg, #222230 0%, #181818 100%)" },
-  { tag: "Most Loved", brand: "NIKE", name: "React Infinity", gradient: "linear-gradient(135deg, #2a1820 0%, #181818 100%)" },
+  { tag: "Trending Now", brand: "NIKE", name: "Air Max 270", placeholder: "linear-gradient(135deg, #e0f4f9 0%, #f5fbfd 100%)", accent: "#2596be" },
+  { tag: "Top Picks", brand: "JORDAN", name: "1 High OG", placeholder: "linear-gradient(135deg, #e8f7fb 0%, #f0fafe 100%)", accent: "#1e8ab0" },
+  { tag: "Editor's Choice", brand: "PUMA", name: "Suede Classic", placeholder: "linear-gradient(135deg, #dff2f8 0%, #eef8fc 100%)", accent: "#3ab0d4" },
+  { tag: "New Arrival", brand: "LASSO", name: "Original Drop", placeholder: "linear-gradient(135deg, #e5f5fb 0%, #f8fdff 100%)", accent: "#2596be" },
+  { tag: "Most Loved", brand: "NIKE", name: "React Infinity", placeholder: "linear-gradient(135deg, #e0f4f9 0%, #f0fafe 100%)", accent: "#1e8ab0" },
 ];
 
 export default function TrendingScrollSection() {
   return (
-    <section
-      className="relative bg-charcoal overflow-hidden"
-    >
-      <div className="absolute top-0 left-0 w-full h-px gold-line" />
-
+    <section className="relative bg-charcoal overflow-hidden">
       <div className="py-20">
-        {/* Title */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8 lg:pt-8 mb-10">
           <AnimatedSection>
-            <p className="text-gold tracking-[0.3em] uppercase text-xs md:text-sm font-body mb-5">
+            <p className="text-xs font-bold tracking-[0.25em] uppercase mb-3" style={{ color: "#2596be" }}>
               What&apos;s Hot
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-off-white leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] text-off-white font-extrabold leading-tight tracking-tight">
               Trending Now
             </h2>
           </AnimatedSection>
         </div>
 
-        {/* Cards — horizontal on desktop, vertical on mobile */}
-        <div
-          className="flex flex-col lg:flex-row gap-6 px-6 lg:px-8 lg:gap-8 lg:overflow-x-auto lg:pb-6 scrollbar-hide"
-        >
+        <div className="flex flex-col lg:flex-row gap-5 px-6 lg:px-8 lg:overflow-x-auto lg:pb-4 scrollbar-hide">
           {trendingItems.map((item) => (
             <div
               key={item.name}
-              className="h-scroll-card flex-shrink-0 w-full lg:w-[420px] xl:w-[480px] relative group cursor-pointer"
+              className="h-scroll-card shrink-0 w-full lg:w-105 xl:w-120 relative group cursor-pointer"
             >
               <div
-                className="relative h-[350px] lg:h-[55vh] border border-white/10 group-hover:border-gold/30 transition-all duration-500 overflow-hidden rounded-sm"
-                style={{ background: item.gradient }}
+                className="relative h-87.5 lg:h-[55vh] border border-gray-100 group-hover:border-gold/40 transition-all duration-350 overflow-hidden rounded-xl shadow-sm group-hover:shadow-lg"
+                style={{ background: item.placeholder }}
               >
-                {/* Tag */}
-                <div className="absolute top-4 left-4 z-10 bg-gold px-3 py-1">
-                  <span className="font-display text-xs text-base-black tracking-[0.15em] font-bold">
-                    {item.tag}
-                  </span>
+                {/* Tag pill */}
+                <div
+                  className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-sm bg-white"
+                  style={{ color: item.accent, border: `1px solid ${item.accent}30` }}
+                >
+                  {item.tag}
                 </div>
 
-                {/* Shoe silhouette placeholder */}
+                {/* Brand watermark */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-[6rem] lg:text-[8rem] text-white/[0.03] select-none">
+                  <span
+                    className="font-display text-[5rem] lg:text-[7rem] font-black select-none"
+                    style={{ color: `${item.accent}12` }}
+                  >
                     {item.brand}
                   </span>
                 </div>
 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-base-black/90 via-base-black/50 to-transparent">
-                  <span className="font-display text-sm text-gold tracking-[0.15em]">
+                {/* Bottom content — light card footer */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 bg-white/80 backdrop-blur-sm border-t border-gray-100">
+                  <span className="text-xs font-bold tracking-widest uppercase" style={{ color: item.accent }}>
                     {item.brand}
                   </span>
-                  <h3 className="font-condensed text-2xl md:text-3xl text-off-white font-bold mt-1">
+                  <h3 className="font-display text-xl md:text-2xl text-off-white font-bold mt-0.5 leading-tight">
                     {item.name}
                   </h3>
-                  <p className="text-off-white/40 text-sm mt-2 font-body">Explore Collection &rarr;</p>
+                  <p className="text-muted text-xs mt-1.5 font-medium group-hover:text-gold transition-colors duration-250">
+                    Explore Collection →
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full h-px gold-line" />
     </section>
   );
 }

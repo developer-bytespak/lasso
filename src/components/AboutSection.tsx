@@ -13,37 +13,49 @@ const products = [
     name: "Air Max 270",
     brand: "NIKE",
     category: "Sneakers" as Category,
-    gradient: "linear-gradient(135deg, #1a1510 0%, #111114 50%, #1a1015 100%)",
+    placeholder: "linear-gradient(135deg, #e0f4f9 0%, #f5fbfd 100%)",
+    accent: "#2596be",
+    icon: "👟",
   },
   {
     name: "Jordan Retro 1",
     brand: "JORDAN",
     category: "Sneakers" as Category,
-    gradient: "linear-gradient(135deg, #201515 0%, #111114 50%, #1a1510 100%)",
+    placeholder: "linear-gradient(135deg, #e8f7fb 0%, #f0fafe 100%)",
+    accent: "#1e8ab0",
+    icon: "👟",
   },
   {
     name: "RS-X Reinvention",
     brand: "PUMA",
     category: "Sneakers" as Category,
-    gradient: "linear-gradient(135deg, #151a1a 0%, #111114 50%, #1a1a15 100%)",
+    placeholder: "linear-gradient(135deg, #dff2f8 0%, #eef8fc 100%)",
+    accent: "#3ab0d4",
+    icon: "👟",
   },
   {
     name: "Lasso Original Tee",
     brand: "LASSO",
     category: "Apparel" as Category,
-    gradient: "linear-gradient(135deg, #1a1a20 0%, #111114 50%, #20151a 100%)",
+    placeholder: "linear-gradient(135deg, #e5f5fb 0%, #f8fdff 100%)",
+    accent: "#2596be",
+    icon: "👕",
   },
   {
     name: "Tech Fleece Hoodie",
     brand: "NIKE",
     category: "Apparel" as Category,
-    gradient: "linear-gradient(135deg, #1a1015 0%, #111114 50%, #15101a 100%)",
+    placeholder: "linear-gradient(135deg, #e0f4f9 0%, #f5fbfd 100%)",
+    accent: "#1e8ab0",
+    icon: "🧥",
   },
   {
     name: "Crossbody Bag",
     brand: "LASSO",
     category: "Accessories" as Category,
-    gradient: "linear-gradient(135deg, #151010 0%, #111114 50%, #201a1a 100%)",
+    placeholder: "linear-gradient(135deg, #dff2f8 0%, #f0fafe 100%)",
+    accent: "#3ab0d4",
+    icon: "👜",
   },
 ];
 
@@ -56,94 +68,69 @@ export default function FeaturedProductsSection() {
       : products.filter((p) => p.category === activeFilter);
 
   return (
-    <section
-      id="collection"
-      className="relative py-32 md:py-40 bg-base-black overflow-hidden"
-    >
-      {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gold/[0.02] to-transparent pointer-events-none" />
-
+    <section id="collection" className="relative py-28 md:py-36 bg-charcoal overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeading
           subtitle="The Collection"
           title="Curated for the Bold"
+          description="Handpicked pieces from the world's most iconic brands, styled for every generation."
         />
 
-        {/* Filter tabs */}
+        {/* Filter pills */}
         <AnimatedSection>
-          <div className="flex justify-center gap-6 md:gap-8 mb-16">
+          <div className="flex justify-center gap-2 mb-12">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`relative text-[11px] tracking-[0.2em] uppercase font-body transition-colors duration-300 pb-2 ${
+                className={`glass-hover px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-250 ${
                   activeFilter === cat
-                    ? "text-gold"
-                    : "text-off-white/40 hover:text-off-white/70"
+                    ? "text-white shadow-sm"
+                    : "text-muted hover:text-off-white bg-white hover:bg-gray-50 border border-gray-200"
                 }`}
+                style={activeFilter === cat ? { background: "#2596be" } : {}}
               >
                 {cat}
-                <span
-                  className={`absolute bottom-0 left-0 h-px bg-gold transition-all duration-500 ${
-                    activeFilter === cat ? "w-full" : "w-0"
-                  }`}
-                />
               </button>
             ))}
           </div>
         </AnimatedSection>
 
-        {/* Product grid */}
+        {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filtered.map((product, i) => (
-            <AnimatedSection
-              key={product.name}
-              delay={0.1 * i}
-              animation="fade-up"
-            >
-              <div className="product-card group cursor-pointer bg-charcoal border border-white/5 hover:border-gold/30 transition-all duration-700">
-                {/* SVG border trace */}
-                <svg className="border-trace absolute inset-0 w-full h-full pointer-events-none z-20">
-                  <rect
-                    x="0.5"
-                    y="0.5"
-                    width="calc(100% - 1px)"
-                    height="calc(100% - 1px)"
-                    fill="none"
-                    stroke="#C8A96E"
-                    strokeWidth="1"
-                    rx="0"
-                  />
-                </svg>
-
-                {/* Product image area (65%) */}
-                <div className="relative h-64 md:h-72 overflow-hidden">
-                  <div
-                    className="card-image absolute inset-0"
-                    style={{ background: product.gradient }}
-                  />
+            <AnimatedSection key={product.name} delay={0.07 * i} animation="fade-up">
+              <div className="product-card group cursor-pointer bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-350">
+                {/* Image placeholder — light theme colors */}
+                <div className="relative h-52 md:h-60 overflow-hidden rounded-t-xl" style={{ background: product.placeholder }}>
                   {/* Brand badge */}
-                  <div className="absolute top-4 left-4 z-10 bg-base-black/70 px-3 py-1 backdrop-blur-sm">
-                    <span className="font-display text-xs text-gold tracking-[0.15em]">
+                  <div className="absolute top-3 left-3 z-10 px-3 py-1 rounded-full bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm">
+                    <span className="text-[10px] font-bold tracking-widest" style={{ color: product.accent }}>
                       {product.brand}
                     </span>
                   </div>
-                  {/* Hover overlay */}
-                  <div className="card-overlay" />
+                  {/* Accent dot */}
+                  <div className="absolute top-3 right-3 w-2 h-2 rounded-full" style={{ background: product.accent }} />
+                  {/* Centered icon */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-5xl opacity-25 select-none">{product.icon}</span>
+                  </div>
+                  {/* Hover overlay (theme-colored, not black) */}
+                  <div className="card-overlay rounded-t-xl" />
                   {/* CTA on hover */}
                   <div className="card-cta absolute bottom-4 left-4 right-4 z-10">
-                    <span className="inline-block px-6 py-2 border border-gold text-gold text-[10px] tracking-[0.2em] uppercase hover:bg-gold hover:text-base-black transition-all duration-300">
-                      View Look
+                    <span className="inline-flex items-center justify-center w-full py-2 rounded-lg text-xs font-bold tracking-wide text-white" style={{ background: product.accent }}>
+                      View Look →
                     </span>
                   </div>
                 </div>
 
-                {/* Product info */}
-                <div className="p-6">
-                  <span className="text-gold text-[9px] tracking-[0.25em] uppercase font-body">
+                {/* Card info */}
+                <div className="p-5">
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: product.accent }}>
                     {product.category}
                   </span>
-                  <h3 className="font-serif text-xl text-off-white mt-2 italic group-hover:text-gold transition-colors duration-500">
+                  <h3 className="font-display text-lg font-bold text-off-white mt-1 group-hover:text-gold transition-colors duration-300">
                     {product.name}
                   </h3>
                 </div>
