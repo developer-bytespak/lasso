@@ -27,9 +27,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-base-black/90 backdrop-blur-xl py-3 shadow-2xl shadow-black/30"
+          ? "bg-white/95 backdrop-blur-xl py-3 shadow-sm border-b border-gray-100"
           : "bg-transparent py-5 md:py-6"
       }`}
     >
@@ -37,9 +37,9 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#home"
-          className={`font-display text-3xl md:text-4xl text-gold tracking-[0.15em] transition-all duration-700 hover:opacity-80 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-          }`}
+          className={`font-display text-2xl md:text-3xl tracking-widest font-bold transition-all duration-500 hover:opacity-80 ${
+            scrolled ? "text-gold" : "text-white"
+          } ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
         >
           LASSO
         </a>
@@ -50,10 +50,14 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`relative text-off-white/60 hover:text-gold text-[11px] tracking-[0.2em] uppercase font-body transition-all duration-300 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full ${
-                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-              }`}
-              style={{ transitionDelay: `${0.3 + i * 0.08}s` }}
+              className={`relative text-sm font-medium tracking-wide transition-all duration-300
+                after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:rounded-full after:transition-all after:duration-300 hover:after:w-full
+                ${scrolled
+                  ? "text-muted hover:text-off-white after:bg-gold"
+                  : "text-white/80 hover:text-white after:bg-white"
+                }
+                ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+              style={{ transitionDelay: `${0.3 + i * 0.06}s` }}
             >
               {link.label}
             </a>
@@ -63,10 +67,12 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <a
           href="#collection"
-          className={`hidden lg:inline-block px-7 py-2.5 border border-gold/80 text-gold text-[11px] tracking-[0.2em] uppercase font-body hover:bg-gold hover:text-base-black transition-all duration-500 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-          }`}
-          style={{ transitionDelay: "0.7s" }}
+          className={`glass-hover hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 ${
+            scrolled
+              ? "bg-teal text-off-white hover:bg-teal/90 shadow-sm"
+              : "bg-white/10 text-white border border-white/30 hover:bg-white/20"
+          } ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+          style={{ transitionDelay: "0.6s" }}
         >
           Explore Collection
         </a>
@@ -74,53 +80,58 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-off-white w-8 h-8 relative flex flex-col justify-center items-center gap-1.5"
+          className="lg:hidden w-8 h-8 relative flex flex-col justify-center items-center gap-1.5"
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-[1px] bg-off-white transition-all duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-[4px]" : ""
-            }`}
+            className={`block w-6 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-off-white" : "bg-white"
+            } ${mobileOpen ? "rotate-45 translate-y-[5px]" : ""}`}
           />
           <span
-            className={`block w-4 h-[1px] bg-off-white transition-all duration-300 ${
-              mobileOpen ? "opacity-0 w-0" : ""
-            }`}
+            className={`block w-4 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-off-white" : "bg-white"
+            } ${mobileOpen ? "opacity-0 w-0" : ""}`}
           />
           <span
-            className={`block w-6 h-[1px] bg-off-white transition-all duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-[4px]" : ""
-            }`}
+            className={`block w-6 h-0.5 rounded-full transition-all duration-300 ${
+              scrolled ? "bg-off-white" : "bg-white"
+            } ${mobileOpen ? "-rotate-45 -translate-y-[5px]" : ""}`}
           />
         </button>
       </div>
 
-      {/* Mobile fullscreen overlay menu */}
+      {/* Mobile overlay menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 bg-base-black/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 top-0 bg-white z-40 flex flex-col items-center justify-center transition-all duration-400 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
         {/* Close button */}
         <button
           onClick={() => setMobileOpen(false)}
-          className="absolute top-6 right-6 text-off-white w-8 h-8 flex flex-col justify-center items-center"
+          className="absolute top-6 right-6 w-8 h-8 flex flex-col justify-center items-center"
           aria-label="Close menu"
         >
-          <span className="block w-6 h-[1px] bg-off-white rotate-45 translate-y-[0.5px]" />
-          <span className="block w-6 h-[1px] bg-off-white -rotate-45 -translate-y-[0.5px]" />
+          <span className="block w-6 h-0.5 bg-off-white rounded-full rotate-45 translate-y-px" />
+          <span className="block w-6 h-0.5 bg-off-white rounded-full -rotate-45 -translate-y-px" />
         </button>
 
-        <div className="flex flex-col items-center gap-8">
+        {/* Logo in mobile */}
+        <div className="absolute top-5 left-6 font-display text-2xl text-gold font-bold tracking-widest">
+          LASSO
+        </div>
+
+        <div className="flex flex-col items-center gap-6">
           {navLinks.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className={`text-off-white/80 hover:text-gold font-display text-3xl tracking-[0.2em] uppercase transition-all duration-500 ${
+              className={`text-off-white hover:text-gold font-display text-2xl font-bold tracking-wide transition-all duration-400 ${
                 mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: mobileOpen ? `${0.1 + i * 0.08}s` : "0s" }}
+              style={{ transitionDelay: mobileOpen ? `${0.05 + i * 0.06}s` : "0s" }}
             >
               {link.label}
             </a>
@@ -128,10 +139,10 @@ export default function Navbar() {
           <a
             href="#collection"
             onClick={() => setMobileOpen(false)}
-            className={`mt-4 px-10 py-3 border border-gold text-gold text-sm tracking-[0.2em] uppercase hover:bg-gold hover:text-base-black transition-all duration-500 ${
+            className={`glass-hover mt-4 px-10 py-3 rounded-xl bg-teal text-off-white text-sm font-semibold tracking-wide transition-all duration-400 hover:bg-teal/90 ${
               mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
-            style={{ transitionDelay: mobileOpen ? "0.6s" : "0s" }}
+            style={{ transitionDelay: mobileOpen ? "0.35s" : "0s" }}
           >
             Explore Collection
           </a>
