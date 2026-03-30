@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, DM_Sans, Bebas_Neue, Barlow_Condensed, Syne } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -8,16 +8,36 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const barlow = Barlow_Condensed({
+  variable: "--font-barlow",
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Elush Beauty Bar | Premium Hair Styling Experience",
+  title: "LASSO — Where Style Meets Performance",
   description:
-    "Experience the art of luxury hair styling. Premium braids, weaves, and transformative beauty services crafted with precision and passion.",
+    "Premium brand marketing platform promoting Nike, Puma, and Jordan products alongside Lasso originals. Culture. Movement. Identity.",
 };
 
 export default function RootLayout({
@@ -26,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${bebas.variable} ${barlow.variable} ${syne.variable}`}>
       <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>
   );

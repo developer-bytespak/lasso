@@ -21,20 +21,20 @@ export default function SectionHeading({
     <div className={`mb-16 md:mb-24 ${centered ? "text-center" : ""}`}>
       {subtitle && (
         <AnimatedSection>
-          <p className="text-gold tracking-[0.3em] uppercase text-xs md:text-sm font-sans mb-5">
+          <p className="text-gold tracking-[0.3em] uppercase text-xs md:text-sm font-body mb-5">
             {subtitle}
           </p>
         </AnimatedSection>
       )}
       <AnimatedSection delay={0.1}>
-        <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-cream leading-tight">
+        <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-off-white leading-tight">
           {title}
         </h2>
       </AnimatedSection>
       {description && (
         <AnimatedSection delay={0.25}>
           <p
-            className={`mt-6 text-base md:text-lg text-cream/50 leading-relaxed max-w-2xl ${
+            className={`mt-6 text-base md:text-lg text-off-white/50 leading-relaxed max-w-2xl font-body ${
               centered ? "mx-auto" : ""
             }`}
           >

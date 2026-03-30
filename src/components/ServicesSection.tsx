@@ -3,49 +3,28 @@
 import AnimatedSection from "./AnimatedSection";
 import SectionHeading from "./SectionHeading";
 
-const services = [
+const brands = [
   {
-    title: "Braiding",
-    description:
-      "From classic cornrows to intricate patterns, our braiding artistry transforms your look with precision and care.",
-    price: "From $80",
+    name: "NIKE",
+    tagline: "Innovation that moves the world forward",
+    gradient: "linear-gradient(135deg, #0d0d0d 0%, #1a1510 50%, #111114 100%)",
   },
   {
-    title: "Weave Install",
-    description:
-      "Flawless weave installations that blend seamlessly with your natural hair for a stunning, voluminous finish.",
-    price: "From $120",
+    name: "PUMA",
+    tagline: "Forever faster. Forever fearless.",
+    gradient: "linear-gradient(135deg, #111114 0%, #161618 50%, #111114 100%)",
   },
   {
-    title: "Braid Takedown",
-    description:
-      "Gentle and careful removal that protects your natural hair integrity while preparing you for your next style.",
-    price: "From $40",
-  },
-  {
-    title: "Wash & Blow Dry",
-    description:
-      "A luxurious cleansing and styling experience that leaves your hair refreshed, nourished, and beautifully finished.",
-    price: "From $50",
-  },
-  {
-    title: "Loc Styling",
-    description:
-      "Expert loc maintenance and creative styling that celebrates the beauty and versatility of your locs.",
-    price: "From $90",
-  },
-  {
-    title: "Custom Styling",
-    description:
-      "Personalized styling consultations to create a unique look tailored to your face shape, lifestyle, and personality.",
-    price: "Consultation",
+    name: "JORDAN",
+    tagline: "A legacy forged in greatness",
+    gradient: "linear-gradient(135deg, #150d0d 0%, #1a1114 50%, #111114 100%)",
   },
 ];
 
-export default function ServicesSection() {
+export default function BrandShowcaseSection() {
   return (
     <section
-      id="services"
+      id="brands"
       className="relative py-32 md:py-40 bg-charcoal overflow-hidden"
     >
       {/* Decorative lines */}
@@ -54,51 +33,45 @@ export default function ServicesSection() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeading
-          subtitle="Our Services"
-          title="Luxury Styling Services"
-          description="Each service is delivered with meticulous attention to detail, premium products, and an unwavering commitment to your satisfaction."
+          subtitle="Partner Brands"
+          title="Icons We Move With"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, i) => (
+        {/* Brand panels */}
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-6 h-auto lg:h-[500px]">
+          {brands.map((brand, i) => (
             <AnimatedSection
-              key={service.title}
-              delay={0.1 * i}
+              key={brand.name}
+              delay={0.2 * i}
               animation="fade-up"
+              className="flex-1"
             >
-              <div className="group relative bg-deep-black/60 border border-white/5 p-8 md:p-10 hover:border-gold/30 transition-all duration-700 h-full">
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <span className="text-gold text-2xl mb-6 block group-hover:scale-110 transition-transform duration-500 origin-left">
-                    ✦
+              <div
+                className="brand-panel group relative h-[300px] lg:h-full cursor-pointer border border-white/5 hover:border-gold/20"
+                style={{ background: brand.gradient }}
+              >
+                {/* Massive brand name */}
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+                  <span className="font-display text-5xl md:text-7xl lg:text-8xl text-off-white/[0.04] tracking-[0.1em] select-none group-hover:text-off-white/[0.08] transition-all duration-700">
+                    {brand.name}
                   </span>
+                </div>
 
-                  {/* Title */}
-                  <h3 className="font-serif text-xl md:text-2xl text-cream mb-3 group-hover:text-gold transition-colors duration-500">
-                    {service.title}
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <h3 className="font-display text-2xl md:text-3xl text-off-white tracking-[0.15em] mb-2">
+                    {brand.name}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-cream/40 text-sm leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Price & link */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-gold/80 text-sm tracking-wider">
-                      {service.price}
-                    </span>
-                    <span className="text-cream/20 text-xs tracking-[0.15em] uppercase group-hover:text-gold/60 transition-colors duration-500">
-                      Learn More →
-                    </span>
+                  <div className="brand-text-reveal">
+                    <p className="text-off-white/50 text-sm font-body mb-3">
+                      {brand.tagline}
+                    </p>
+                    <div className="w-12 h-px bg-gold" />
                   </div>
                 </div>
 
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-700" />
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gold/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               </div>
             </AnimatedSection>
           ))}
